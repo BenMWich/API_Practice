@@ -36,7 +36,7 @@ $(document).ready(function(){
 	});
 
 
-	//Is used to add more buttons from user input
+	//Updates the api url with the user's key
 	$("#updateAPI").click(function(){
 		var apiName = $("#apiName").val();
 		if(apiName != "")
