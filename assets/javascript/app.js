@@ -1,14 +1,15 @@
 $(document).ready(function(){
 
 
-	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.");
+	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.\n\nNOTE: By default, the public beta API key from Giphy is used and might be rate limited. Using your own key is preferable.");
 
 	//String of topics
 	var topics = ["Sushi", "Pie", "Steak", "Seafood"];
 
 	//The api being used, the key, the search term, and how many images to get. It's broken into pieces for easy editing
+	var uKey = "dc6zaTOxFJmzC";
 	var api = "https://api.giphy.com/v1/gifs/search?";
-	var apiKey = "&api_key=dc6zaTOxFJmzC&q=";
+	var apiKey = "&api_key="+uKey+"&q=";
 	var searchTerm = "";
 	var limit = "&limit=12";
 	var limNum = 12;
@@ -33,6 +34,20 @@ $(document).ready(function(){
 		updateTopics();
 
 	});
+
+
+	//Is used to add more buttons from user input
+	$("#updateAPI").click(function(){
+		var apiName = $("#apiName").val();
+		if(apiName != "")
+		{
+			uKey = apiName;
+			apiKey = "&api_key="+uKey+"&q=";
+
+		}
+
+	});
+
 
 	//Populates the page with the initial buttons
 	updateTopics();
