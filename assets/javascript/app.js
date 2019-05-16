@@ -82,7 +82,7 @@ $(document).ready(function(){
 
 
 
-		//Old method, overly complicated. Switched to this new method ^ since it was bothering me
+		//Old method, overly complicated
 		/*
 		//Searches to see if the clicked image is active
 		for(i = 0; i < activeID.length; i++)
