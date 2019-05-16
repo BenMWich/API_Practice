@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.\n\nNOTE: By default, the public beta API key from Giphy is used and might be rate limited. Using your own key is preferable.");
+	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.\nYou can change which gifs are shown by updating the result offset with an integer. \n\nNOTE: By default, the public beta API key from Giphy is used and might be rate limited. Using your own key is preferable.");
 
 	//String of topics
 	var topics = ["Sushi", "Pie", "Steak", "Seafood"];
@@ -13,6 +13,7 @@ $(document).ready(function(){
 	var searchTerm = "";
 	var limit = "&limit=12";
 	var limNum = 12;
+	var uOffset = "&offset="+0;
 	//The full api url
 	//var testURL = api + apiKey + searchTerm + limit;
 	//The actual gif urls gotten from the api
@@ -43,10 +44,28 @@ $(document).ready(function(){
 		{
 			uKey = apiName;
 			apiKey = "&api_key="+uKey+"&q=";
+		}
+
+	});
+
+
+	//Updates the offset so different results are shown
+	$("#setOffset").click(function(){
+		var offSet = $("#upOffset").val();
+		if(upOffset != "")
+		{
+			uOffset = "&offset="+offSet;
+
+			for(i = 0; i < limNum; i++)
+			{
+				$("#pictureContainer").empty();
+				getPictures(i);
+			}
 
 		}
 
 	});
+
 
 
 	//Populates the page with the initial buttons
@@ -133,7 +152,7 @@ $(document).ready(function(){
 	//Populates the page with still gifs when called
 	function getPictures(pos)
 	{
-		var fullURL = api + apiKey + searchTerm + limit;
+		var fullURL = api + apiKey + searchTerm + limit + uOffset;
 		var getData = $.get(fullURL, function(data){
 			acquiredURLStill = data.data[pos].images.original_still.url;
 			var rating = data.data[pos].rating; 
@@ -148,7 +167,7 @@ $(document).ready(function(){
 	//Plays the gif
 	function activatePicture(pos)
 	{
-		var fullURL = api + apiKey + searchTerm + limit;
+		var fullURL = api + apiKey + searchTerm + limit + uOffset;
 		var getData = $.get(fullURL, function(data){
 			acquiredURLActive = data.data[pos].images.original.url;
 			$("#"+pos).attr("src", acquiredURLActive);
@@ -159,7 +178,7 @@ $(document).ready(function(){
 	//Stops the gif
 	function deactivatePicture(pos)
 	{
-		var fullURL = api + apiKey + searchTerm + limit;
+		var fullURL = api + apiKey + searchTerm + limit + uOffset;
 		var getData = $.get(fullURL, function(data){
 			acquiredURLStill = data.data[pos].images.original_still.url;
 			$("#"+pos).attr("src", acquiredURLStill);
