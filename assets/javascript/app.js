@@ -16,7 +16,7 @@ $(document).ready(function(){
 	var limNum = 12;
 	var uOffset = "&offset="+0;
 	//The full api url
-	//var testURL = api + apiKey + searchTerm + limit;
+	//var testURL = api + apiKey + searchTerm + limit + offset;
 	//The actual gif urls gotten from the api
 	var acquiredURLStill = "";
 	var acquiredURLActive ="";
@@ -32,6 +32,7 @@ $(document).ready(function(){
 		if(gName != "")
 		{
 			topics.push(gName);
+			$("#gName").val("");
 		}
 		updateTopics();
 
@@ -45,6 +46,7 @@ $(document).ready(function(){
 		{
 			uKey = apiName;
 			apiKey = "&api_key="+uKey+"&q=";
+			$("#apiName").val("");
 		}
 
 	});
