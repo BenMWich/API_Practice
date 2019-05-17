@@ -129,9 +129,8 @@ $(document).ready(function(){
 		var getData = $.get(fullURL, function(data){
 			acquiredURLStill = data.data[pos].images.original_still.url;
 			var rating = data.data[pos].rating; 
-			//Adds a text/picture container for each image
-			$("#pictureContainer").append('<div class="textPic"><p>Rating: ' + rating+'<p><img id="'+pos+'"" src="'+acquiredURLStill+'"></div>');
-
+			//Adds a text/picture/attribution container for each image
+			$("#pictureContainer").append('<div class="textPic"><p>Rating: ' + rating+'<p><img id="'+pos+'"" class="mainPic" src="'+acquiredURLStill+'"><p><img id="ati" src="assets/images/giphy_attribution.gif"></div>');
 
 
 		});
