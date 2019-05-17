@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	//Test
+	
 
 	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.\nYou can change which gifs are shown by updating the result offset with an integer. \n\nNOTE: By default, the public beta API key from Giphy is used and might be rate limited. Using your own key is preferable.");
 
