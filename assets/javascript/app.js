@@ -5,7 +5,7 @@ $(document).ready(function(){
 	alert("Instructions: \nClick a category to display gifs. Click on a still image to play the gif, and click on it again to stop the gif.\nYou can change which gifs are shown by updating the result offset with an integer. \n\nNOTE: By default, the public beta API key from Giphy is used and might be rate limited. Using your own key is preferable.");
 
 	//String of topics
-	var topics = ["Sushi", "Pie", "Steak", "Seafood"];
+	var topics = ["Apples", "Oranges", "Cats", "Dogs"];
 
 	//The api being used, the key, the search term, and how many images to get. It's broken into pieces for easy editing
 	var uKey = "dc6zaTOxFJmzC";
@@ -95,6 +95,7 @@ $(document).ready(function(){
 
 
 
+
 	//Listens for clicks on the images, and then plays or stops the image that was clicked
 	$("#pictureContainer").on("click", "img", function(){
 
@@ -113,37 +114,6 @@ $(document).ready(function(){
 			activeID[this.id] = 0;
 		}
 
-
-
-
-
-		//Old method, overly complicated
-		/*
-		//Searches to see if the clicked image is active
-		for(i = 0; i < activeID.length; i++)
-		{
-			if(this.id == activeID[i])
-			{
-				count++;
-				break;
-			}
-		}
-
-		//If the image is active, deactivate the image and removes it from the array of active IDs
-		if(count > 0)
-		{
-			deactivatePicture(this.id);
-			count = 0;
-			var elementPOS = activeID.indexOf(this.id);
-			activeID.splice(elementPOS, 1);
-		}
-		//If the image isn't active, activate the image and add it to the array of active IDs
-		else if(count == 0)
-		{
-			activatePicture(this.id);
-			activeID.push(this.id);
-		}
-		*/
 
 	});
 
